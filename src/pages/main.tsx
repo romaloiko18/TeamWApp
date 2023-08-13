@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { Card, Carousel, Col, Row } from 'react-bootstrap';
 import FAQ from '../components/FAQ';
+import * as io from 'socket.io-client';
 
+const socket = io.connect('http://localhost:8080');
 const Main = () => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+  socket.emit('send-message', { message: 'hello' });
+
+  socket.on('receive-message', (response) => {
+    console.log(response);
+  });
 
   const handleSelect = (selectedIndex: number) => {
     setActiveSlideIndex(selectedIndex);

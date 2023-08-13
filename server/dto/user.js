@@ -1,8 +1,10 @@
 class UserProfileDto {
-  constructor({ email, _id, projects }) {
+  constructor({ email, _id, pokemons, nickName, role }) {
     this.email = email;
     this._id = _id;
-    this.projects = projects;
+    this.pokemons = pokemons;
+    this.nickName = nickName;
+    this.role = role;
   }
 }
 

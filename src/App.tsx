@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Main from './pages/main';
 import SignIn from './pages/signin';
@@ -10,9 +10,15 @@ import Project from './pages/project';
 import Ticket from './pages/ticket';
 import { authService } from './services/auth';
 import { ToastContainer, Zoom } from 'react-toastify';
+import { socketService } from './services/socketService';
+import AdminPage from './pages/admin';
 
 function App() {
   const isAuth = authService.getToken();
+
+  useEffect(() => {
+    socketService.connect();
+  }, []);
 
   useAuth();
 
@@ -22,6 +28,10 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Main />} />
+
+            <Route path="/admin" element={<AdminPage />} />
+
+            <Route path="/admin/create-pokemon" element={<AdminPage />} />
 
             <Route path="/projects" element={<Projects />} />
 
