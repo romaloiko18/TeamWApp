@@ -9,9 +9,7 @@ const Main = () => {
 
   socket.emit('send-message', { message: 'hello' });
 
-  socket.on('receive-message', (response) => {
-    console.log(response);
-  });
+  socket.on('receive-message', (response) => {});
 
   const handleSelect = (selectedIndex: number) => {
     setActiveSlideIndex(selectedIndex);

@@ -12,6 +12,8 @@ import { authService } from './services/auth';
 import { ToastContainer, Zoom } from 'react-toastify';
 import { socketService } from './services/socketService';
 import AdminPage from './pages/admin';
+import WorldLocation from './pages/worldLocation';
+import TrainingLocation from './pages/trainingLocation';
 
 function App() {
   const isAuth = authService.getToken();
@@ -38,6 +40,10 @@ function App() {
             <Route path="/projects/:projectId" element={<Project />} />
 
             <Route path="/projects/:projectId/:ticketId" element={<Ticket />} />
+
+            <Route path="/world" element={<WorldLocation />} />
+
+            <Route path="/world/:location" element={<TrainingLocation />} />
 
             <Route path="*" element={<div> Not found </div>} />
           </Routes>

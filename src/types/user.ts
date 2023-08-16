@@ -5,4 +5,5 @@ export type User = {
   projects?: [];
   _id: string;
   role: UserRole;
+  pokemons: any[];
 };

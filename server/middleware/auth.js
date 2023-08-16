@@ -18,7 +18,6 @@ module.exports = async (req, res, next) => {
 
     const isAdmin = decodedToken.role === USER_ROLES.ADMIN;
 
-    console.log(req.body);
     if (!user) {
       res.status(401).json({ success: false, error: 'Unauthorized' });
     } else {

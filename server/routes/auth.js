@@ -7,7 +7,6 @@ const JsonWebToken = require('jsonwebtoken');
 require('dotenv').config();
 
 router.post('/signup', async (req, res) => {
-  console.log(req.body);
   if (!req.body.email || !req.body.password || !req.body.nickName) {
     return res.status(404).send({ success: false, error: 'Send needed params' });
   }

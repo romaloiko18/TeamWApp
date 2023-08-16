@@ -1,23 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-const UserProfileDto = require('../dto/user');
+
+const { userService } = require('../services/user');
+const { userController } = require('../controllers/user');
 require('dotenv').config();
 
 const User = require('../entities/user');
+const Pokemon = require('../entities/pokemon');
 
-router.get('', auth, async (req, res) => {
-  const userId = req.body.userId;
+router.get('', auth, userController.getUser);
 
-  try {
-    const user = await User.findOne({ _id: userId });
-
-    if (!user) return res.status(404).send({ success: false, error: 'No user with such id was found' });
-
-    return res.send({ success: true, user: new UserProfileDto(user) });
-  } catch (error) {
-    return res.send({ success: false, error });
-  }
-});
+router.post('/attach/pokemon', auth, userController.attachPokemon);
 
 module.exports = router;

@@ -13,6 +13,10 @@ class SocketService {
       });
     }
   }
+
+  getToken() {
+    return this.socket;
+  }
 }
 
 export const socketService = new SocketService();
